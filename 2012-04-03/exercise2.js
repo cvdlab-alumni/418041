@@ -37,12 +37,14 @@
 	var base9 = SIMPLEX_GRID([[-51,1],[-4,2],[altezzaBase]]);
 
 	var base10 = SIMPLEX_GRID([[-47,4],[-5,11],[1.7]]);
+	var base11 = SIMPLEX_GRID([[-36,3],[-16,1],[altezzaBase]]);
+	
 	var bordoPiscina3 = SIMPLEX_GRID([[-51,0.2],[-4.8,11.4],[altezzaBase+altezzaMuri]]);
-	var bordoPiscina4 = SIMPLEX_GRID([[-39,12],[-16,0.2],[altezzaBase+altezzaMuri]]);
+	var bordoPiscina4 = SIMPLEX_GRID([[-37.5,0.5+13],[-16,0.2],[altezzaBase+altezzaMuri]]);
 	var bordoPiscina5 = SIMPLEX_GRID([[-41,10],[-4.8,0.2],[altezzaBase+altezzaMuri]]);
 	
 
-	model.push(STRUCT([base1,base2,base3,bordoPiscina,bordoPiscina1,bordoPiscina2,base4,
+	model.push(STRUCT([base1,base2,base3,base11,bordoPiscina,bordoPiscina1,bordoPiscina2,base4,
 		base5,base6,base7,base8,base9,base10,bordoPiscina3,bordoPiscina4,bordoPiscina5,bordoPiscina6]))
 
 	//Scale
@@ -128,6 +130,10 @@
  var roof1 = SIMPLEX_GRID([[-24,23],[-4,13],[-(altezzaBase+altezzaMuri),0.5]]);
 
  model.push(STRUCT([roof,roof1]));
+
+ var lucernario = SIMPLEX_GRID([[-31,1],[-7.5,5.9],[-(altezzaBase+altezzaMuri+0.5),0.1]]);
+ model.push(lucernario);
+
 
  exports.model = STRUCT(model);
 

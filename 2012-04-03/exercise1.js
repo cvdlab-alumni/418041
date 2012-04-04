@@ -46,7 +46,7 @@
 
 	model.push(STRUCT([wallsx1,walldx1,walldx2]));
 
-	//Muri interni di 0.08 m
+	//Vetrate di 0.08 m
 	var sxwall1 = POLYLINE([
 		[1,17],[7,17],[7,17.08],
 		[5.04,17.08],[5.04,18],[4.96,18],

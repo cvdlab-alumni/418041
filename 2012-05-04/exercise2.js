@@ -190,23 +190,33 @@
 	var elica = T([0,1,2])([-0.7,0.75,1.4])(R([1,2])([PI/8])(STRUCT([cil,pala1,pala2])));
 
 	// Carrello Post
-	var carrPost = T([0,1,2])([10,0.05,2])(R([0,1])([PI])(
+	var carrPost = T([0,1,2])([10,1.5/2+0.025,0.9])(R([0,1])([PI])(
 	STRUCT([
-		R([0,2])([PI/3])(CUBOID([0.1,0.1,0.7]))
-		,T([0,2])([0.35,0.15])(CUBOID([0.1,0.1,0.2]))
+		T([0,2])([0.15,0.15])(R([0,2])([PI/3])(CUBOID([0.05,0.05,0.7]))),
+		,T([0,2])([0.35,0.25])(CUBOID([0.05,0.05,0.08]))
 		])));
-	DRAW(carrPost);
-
-
-	// Carrello Ant
 	
+	// Carrello Ant
+
+	var as1 = T([0,1])([0,0])(CUBOID([0.05,0.05,0.8]));
+	var as2 = T([0,1])([0,0])(R([0,2])([-PI/4])(CUBOID([0.05,0.05,1.1])));
+	var as3 = CUBOID([0.025,1.2,0.025]);
+	var ruotaSx = T([1])([-0.1])(S([0,1,2])([0.4,0.4,0.4])(R([1,2])([PI/2])(TORUS_SOLID([0.1, 0.9])([12,8,8]))));
+	var ruotaDx = T([1])([0.25+1.2])(ruotaSx);
+	var t = T([1])([1.2]);
+	var st1 = COLOR([16/255,78/255,139/255])(STRUCT([as1,as2,as3,t,as1,as2]));
+	var st2 = COLOR([0,0,0])(STRUCT([ruotaSx,ruotaDx]));
+	var cerchio1 = T([0,1,2])([-0.52/2,-0.1,-0.52/2])(CUBOID([0.52,0.04,0.52]));
+	var cerchio2 = T([0,1])([0,1.45])(cerchio1);
+	var st3 = COLOR([255/255,211/255,155/255])(STRUCT([cerchio1,cerchio2]));
+	var carrAnt = T([0,1,2])([1,0.1,-0.7])(STRUCT([st1,st2,st3]));
 
 
 	// Cupolino
 
 
 
-	exports.fusoliera = STRUCT([fusoliera,elica]);	
+	exports.fusoliera = STRUCT([fusoliera,elica,carrPost,carrAnt]);	
 
 
  }(this));

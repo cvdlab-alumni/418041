@@ -4,7 +4,7 @@
  */
 
 
- (function(exports){
+ (function (exports){
 
  	var domain = INTERVALS(1)(40);
  	var domain2 = DOMAIN([[0,1],[0,1]])([50,50]);
@@ -36,7 +36,7 @@
 	//DRAW(curve2);
 
 	//Tail
-	var d2 = 12;
+	var d2 = 10;
 	var p2 = [[0+d2,1.5/2,0.2+0.7],[0+d2,0.4,0.2+0.7],[0+d2,0.4,0.4+0.7],[0+d2,0.4,0.9+0.7],[0+d2,1.5/2,1.3+0.65],
 		[0+d2,1.1,0.9+0.7],[0+d2,1.1,0.4+0.7],[0+d2,1.1,0.2+0.7],[0+d2,1.5/2,0.2+0.7]];
 
@@ -52,7 +52,7 @@
 	fusoliera = MAP(fusoliera)(domain2);
 
 	// Chiudo la coda
-	var d6 = 12
+	var d6 = 10
 	var p6 = [[0+d6,1.5/2,0.2+0.7],[0+d6,1.5/2,0.2+0.7]];
 	var c6 = BEZIER(S0)(p6);
 	var surf0 = BEZIER(S1)([c2,c6]);
@@ -66,7 +66,7 @@
 	var surf1 = BEZIER(S1)([c0,c4]);
 	surf1 = MAP(surf1)(domain2);
 
-	var p5 = p2.map(function(p) {return [p[0]-12.5, p[1], p[2]]; });
+	var p5 = p2.map(function(p) {return [p[0]-10.5, p[1], p[2]]; });
 	var k5 = [0,0,0,1,2,3,4,5,6,7,7,7];
 	var c5 = NUBS(S0)(2)(k5)(p5);
 

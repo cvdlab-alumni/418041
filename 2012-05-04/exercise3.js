@@ -3,7 +3,7 @@
  * and vertical stabilizers (local coordinate system).
  */
 
- (function (exports){
+(function (exports){
 
 
  	var domain = INTERVALS(1)(40);

@@ -128,7 +128,7 @@
 	//DRAW(orizzr);
 
 
-	exports.stabilizzatori = COLOR([1,250/255,250/255])(STRUCT([T([1])([-0.05])(vert),
+	exports.stabilizzatori = COLOR([0.999,0.999,0.999])(STRUCT([T([1])([-0.05])(vert),
 		T([2])([0.3])(orizzl),
 			T([2])([0.3])(orizzr)]));
 

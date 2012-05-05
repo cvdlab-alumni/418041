@@ -116,12 +116,9 @@
 
 	}(this));
 
- /*
- * EXERCISE 2 - Produce the model of a single wing in a
- * local coordinate system.
- */
 
- (function (exports){
+
+(function (exports){
 
  	var domain = INTERVALS(1)(40);
  	var domain2 = DOMAIN([[0,1],[0,1]])([50,50]);
@@ -331,10 +328,23 @@
 
 
 	// Cupolino
+	var p0 = [[0,1.5/2,0],[0.3,0,0],[0.3,0,0.2],[0.2,0,0.3],[0,1.5/2,0.6],
+		[0.3,1.5,0.3],[0.3,1.5,0.2],[0.3,1.5,0],[0,1.5/2,0]];
+	var k0 = [0,0,0,1,2,3,4,5,6,7,7,7];
+	var c0 = NUBS(S0)(2)(k0)(p0);
+
+	var curve2 = MAP(c0)(domain);
+
+	var p1 = [p0[0],p0[0]];
+	var c1 = BEZIER(S0)(p1);
+	var surf0 = BEZIER(S1)([c0,c1]);
+	surf0 = COLOR([0,245/255,255/255,0.4])(MAP(surf0)(domain2));
+	var cupolino = T([0,1,2])([1,0.3,1.72])(
+		R([0,2])([PI/12])(
+			S([0,1,2])([0.6,0.6,0.6])(STRUCT([curve2,surf0]))));
 
 
-
-	exports.fusoliera = STRUCT([fusoliera,elica,carrPost,carrAnt]);	
+	exports.fusoliera = STRUCT([fusoliera,elica,carrPost,carrAnt,cupolino]);	
 
 
  }(this));

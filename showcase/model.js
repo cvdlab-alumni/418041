@@ -1,4 +1,8 @@
-// DRAWING A CHESS QUEEN
+/**
+ * @author Rebecca Fabrizio
+ * 
+ * Drawing a chess queen
+ */
 
 !(function (exports){
 	var queen = [];	

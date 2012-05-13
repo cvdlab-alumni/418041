@@ -110,6 +110,6 @@
 
 	// EXPORT THE MODEL
 	var struct1 = COLOR([152/255,118/255,84/255])(STRUCT(queen));
-	exports.scmodel = struct1;
+	exports.scmodel = S([0,1,2])([0.2,0.2,0.2])(struct1);
 
 }(this));

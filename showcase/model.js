@@ -105,8 +105,11 @@
 	var sphere = sphereSurface(0.4,20);
 	queen.push(T([2])([15.1+d2])(sphere));
 
-	var base = DISK(3.8)([50,2]);
-	queen.push(base);
+	var b = [[5+r,0,0],[0+r,0,0]];
+	var cb = BEZIER(S0)(b);
+	var mb = ROTATIONAL_SURFACE(cb);
+	var sb = MAP(mb)(domain2);	
+	queen.push(sb);
 
 	// EXPORT THE MODEL
 	var struct1 = COLOR([152/255,118/255,84/255])(STRUCT(queen));

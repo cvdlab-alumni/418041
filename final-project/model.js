@@ -157,7 +157,7 @@
 		
 			var walls = [];
 
-			//Sbarre
+			//Barrier
 			var orizontalBarrier = COLOR([0,0,0])(
 				SIMPLEX_GRID([[0,1],[0,0.02],[0,0.02]]));
 			var verticalBarrier = COLOR([0,0,0])(
@@ -219,7 +219,7 @@
 		
 			var walls = [];
 
-			//Sbarre
+			//Barriers
 			var orizontalBarrier = COLOR([0,0,0])(
 				SIMPLEX_GRID([[0,1],[0,0.02],[0,0.02]]));
 			var verticalBarrier = COLOR([0,0,0])(
@@ -520,10 +520,10 @@
 			return STRUCT([ground,grass]);
 		}
 			
-		DRAW(STRUCT([base,firstFloor,drawGround()]));
+		return STRUCT([base,firstFloor,drawGround()]);
 	}
 
-	drawBaseOfStructure();
+	DRAW(drawBaseOfStructure());
 
 
 	/*
@@ -566,7 +566,7 @@
 		 	return COLOR([0,0,0])(STRUCT(polyStruct));
 		};
 
-		var drawGrateVerticale = function(hDistance, vDistance) {
+		var drawVerticalGrate = function(hDistance, vDistance) {
 			var grateIntervals = 0.15;
 			var color = [0,0,0];
 
@@ -638,7 +638,7 @@
 			var wall1 = 
 				SIMPLEX_GRID([[0,d],[0,0.3],[0,1]]);
 
-			//Prodotto superfici
+			//Product surfaces
 			var vert = BEZIER(S2)([vert1,vert2]);		
 
 			return COLOR(baseColor)(
@@ -747,15 +747,15 @@
 				SIMPLEX_GRID([[0,0.1],[0,0.05],[0,1.25]]));
 			var orizontalBarrier = COLOR([0,0,0])(
 				SIMPLEX_GRID([[0,1-0.08],[0,0.05],[0,0.1]]));
-			var vetro = COLOR(windowsColor)(BOUNDARY(
+			var glass = COLOR(windowsColor)(BOUNDARY(
 				SIMPLEX_GRID([[0,1],[0,0.01],[0,2]])));
-			var banda = COLOR([0,0,0])(
+			var stripe = COLOR([0,0,0])(
 				SIMPLEX_GRID([[0,0.04],[0,0.05],[0,2]]));
 
-			windows.push(T([0,1])([-0.5,0.01+0.2])(vetro));
+			windows.push(T([0,1])([-0.5,0.01+0.2])(glass));
 			windows.push(T([0,1])([-0.5,0.01+0.2])(drawSquareGrate(1,2)));
-			windows.push(T([0,1])([0.46,0.2-0.04])(banda));
-			windows.push(T([0,1])([-0.46-0.04,0.2-0.04])(banda));
+			windows.push(T([0,1])([0.46,0.2-0.04])(stripe));
+			windows.push(T([0,1])([-0.46-0.04,0.2-0.04])(stripe));
 			windows.push(T([0,1,2])([-0.05,0.2-0.04,0.05])(verticalBarrier));
 			windows.push(T([0,1,2])([-0.5+0.04,0.2-0.04,1.3])(orizontalBarrier));
 			windows.push(T([0,1,2])([-0.5+0.04,0.2-0.04,1.9])(orizontalBarrier));
@@ -833,20 +833,20 @@
 
 			var verticalBarrier = COLOR([0,0,0])(
 				SIMPLEX_GRID([[0,0.08],[0,0.05],[0,1.1-0.08]]));
-			var vetro = COLOR(windowsColor)(BOUNDARY(
+			var glass = COLOR(windowsColor)(BOUNDARY(
 				SIMPLEX_GRID([[0,1],[0,0.01],[0,1.1]])));
-			var banda = COLOR([0,0,0])(
+			var stripe = COLOR([0,0,0])(
 				SIMPLEX_GRID([[0,0.04],[0,0.05],[0,1.1-0.04-0.04]]));
-			var bandaOriz = COLOR([0,0,0])(
+			var stripeOriz = COLOR([0,0,0])(
 				SIMPLEX_GRID([[0,1],[0,0.05],[0,0.04]]));
 
 			windows.push(T([0,1,2])([-0.04,0.2-0.04,0.04])(verticalBarrier));
-			windows.push(T([0,1])([-0.5,0.01+0.2])(vetro));
-			windows.push(T([0,1,2])([0.46,0.2-0.04,0.04])(banda));
-			windows.push(T([0,1,2])([-0.46-0.04,0.2-0.04,0.04])(banda));
+			windows.push(T([0,1])([-0.5,0.01+0.2])(glass));
+			windows.push(T([0,1,2])([0.46,0.2-0.04,0.04])(stripe));
+			windows.push(T([0,1,2])([-0.46-0.04,0.2-0.04,0.04])(stripe));
 				
-			windows.push(T([0,1,2])([-0.5,0.2-0.04,1.06])(bandaOriz));
-			windows.push(T([0,1])([-0.5,0.2-0.04])(bandaOriz));
+			windows.push(T([0,1,2])([-0.5,0.2-0.04,1.06])(stripeOriz));
+			windows.push(T([0,1])([-0.5,0.2-0.04])(stripeOriz));
 
 			windows.push(wall);
 
@@ -875,20 +875,20 @@
 
 			var verticalBarrier = COLOR([0,0,0])(
 				SIMPLEX_GRID([[0,0.1],[0,0.05],[0,1.7-0.08]]));
-			var vetro = COLOR(windowsColor)(BOUNDARY(
+			var glass = COLOR(windowsColor)(BOUNDARY(
 				SIMPLEX_GRID([[0,1],[0,0.01],[0,1.7]])));
-			var banda = COLOR([0,0,0])(
+			var stripe = COLOR([0,0,0])(
 				SIMPLEX_GRID([[0,0.04],[0,0.05],[0,1.7-0.04-0.04]]));
-			var bandaOriz = COLOR([0,0,0])(
+			var stripeOriz = COLOR([0,0,0])(
 				SIMPLEX_GRID([[0,1],[0,0.05],[0,0.04]]));
 
 			windows.push(T([0,1,2])([-0.05,0.2-0.04,0.04])(verticalBarrier));
-			windows.push(T([0,1])([-0.5,0.01+0.2])(vetro));
+			windows.push(T([0,1])([-0.5,0.01+0.2])(glass));
 			windows.push(T([0,1])([-0.5,0.01+0.2])(drawGrate(1,1.7)));
-			windows.push(T([0,1,2])([0.46,0.2-0.04,0.04])(banda));
-			windows.push(T([0,1,2])([-0.46-0.04,0.2-0.04,0.04])(banda));
-			windows.push(T([0,1,2])([-0.5,0.2-0.04,1.66])(bandaOriz));
-			windows.push(T([0,1])([-0.5,0.2-0.04])(bandaOriz));
+			windows.push(T([0,1,2])([0.46,0.2-0.04,0.04])(stripe));
+			windows.push(T([0,1,2])([-0.46-0.04,0.2-0.04,0.04])(stripe));
+			windows.push(T([0,1,2])([-0.5,0.2-0.04,1.66])(stripeOriz));
+			windows.push(T([0,1])([-0.5,0.2-0.04])(stripeOriz));
 			windows.push(wall);
 
 
@@ -1065,8 +1065,8 @@
 			var wall = COLOR(baseColor)(STRUCT(walls));
 			var windows = [];
 
-			//Sbarre con vetro
-			var vetro = COLOR(windowsColor)(BOUNDARY(
+			//Barriers with glass
+			var glass = COLOR(windowsColor)(BOUNDARY(
 				SIMPLEX_GRID([[0,1.7],[0,0.01],[0,3.5]])));
 
 			var verticalBarrier = COLOR([0,0,0])(
@@ -1075,14 +1075,14 @@
 			var orizontalBarrier = COLOR([0,0,0])(
 				SIMPLEX_GRID([[0,1.7-0.08],[0,0.04],[0,0.08]]));
 				
-			var bandaVert = COLOR([0,0,0])(
+			var stripeVert = COLOR([0,0,0])(
 				SIMPLEX_GRID([[0,0.04],[0,0.04],[0,3.5]]));
 
-			windows.push(T([0,1])([0.15,0.2])(vetro));
-			windows.push(T([0,1])([0.15,0.2-0.04])(drawGrateVerticale(1.7,3.5)));
+			windows.push(T([0,1])([0.15,0.2])(glass));
+			windows.push(T([0,1])([0.15,0.2-0.04])(drawVerticalGrate(1.7,3.5)));
 			windows.push(T([0,1])([0.15+0.85,0.2-0.04])(verticalBarrier));
-			windows.push(T([0,1])([0.15,0.2-0.04])(bandaVert));
-			windows.push(T([0,1])([0.15+1.7-0.04,0.2-0.04])(bandaVert));
+			windows.push(T([0,1])([0.15,0.2-0.04])(stripeVert));
+			windows.push(T([0,1])([0.15+1.7-0.04,0.2-0.04])(stripeVert));
 			windows.push(T([0,1,2])([0.15+0.04,0.2-0.04,2.33])(orizontalBarrier));
 			windows.push(T([0,1,2])([0.15+0.04,0.2-0.04,1.16])(orizontalBarrier));
 			windows.push(T([0,1])([0.15+0.04,0.2-0.04])(orizontalBarrier));
@@ -1122,11 +1122,11 @@
 			
 		//Reproduction for the other sides
 		var r = R([0,1])([-PI/2]);
-		DRAW(STRUCT([baseDaReplicare,r,
-				baseDaReplicare,r,baseDaReplicare,r,baseDaReplicare]));
+		return STRUCT([baseDaReplicare,r,
+				baseDaReplicare,r,baseDaReplicare,r,baseDaReplicare]);
 	}
 
-	drawFacade();
+	DRAW(drawFacade());
 
 
 	/*
@@ -1142,43 +1142,43 @@
 
 			var Capital = [];
 
-			var capitalControlsPoints = function(maxRadius) {
+			var capitalwithtrolsPoints = function(maxRadius) {
 				 maxRadius = maxRadius || 1;
-				 var controlPoints = [];
+				 var withtrolPoints = [];
 				 
 				 var i = 0;
 				 var Angle = PI/2;
 
 				 for (i = 0; i < 13; i++) {
-				  controlPoints.push( [
+				  withtrolPoints.push( [
 				  	maxRadius * ( COS(i*Angle) + i*SIN(i*Angle)  ),
 				  	0,
 				  	maxRadius * ( SIN(i*Angle) - i*COS(i*Angle)  )] );
 				 }
 				 
-				 return controlPoints;
+				 return withtrolPoints;
 			};
 
 			var rotationAngle = 2.18/3*PI;
 
 			//Base 1
-			var p0 = capitalControlsPoints(0.03);
+			var p0 = capitalwithtrolsPoints(0.03);
 			p0 = rotatePoints(p0,rotationAngle,1);
 			var k0 = makeKnots(p0,2);
 			var c0 = NUBS(S0)(2)(k0)(p0);
-			var p1 = capitalControlsPoints(0.035);
+			var p1 = capitalwithtrolsPoints(0.035);
 			p1 = rotatePoints(p1,rotationAngle,1);
 			var k1 = makeKnots(p1,2);
 			var c1 = NUBS(S0)(2)(k1)(p1);
 			var s0 = BEZIER(S1)([c0,c1]);
 
 			//Base 11
-			var p2 = capitalControlsPoints(0.03);
+			var p2 = capitalwithtrolsPoints(0.03);
 			p2 = rotatePoints(p2,rotationAngle,1);
 			p2 = movesPoints(p2,1,1.1);
 			var k2 = makeKnots(p2,2);
 			var c2 = NUBS(S0)(2)(k2)(p2);
-			var p3 = capitalControlsPoints(0.035);
+			var p3 = capitalwithtrolsPoints(0.035);
 			p3 = rotatePoints(p3,rotationAngle,1);
 			p3 = movesPoints(p3,1,1.1);
 			var k3 = makeKnots(p3,2);
@@ -1190,13 +1190,13 @@
 			Capital.push(base1);
 
 			//Base 2
-			var p0 = capitalControlsPoints(0.03);
+			var p0 = capitalwithtrolsPoints(0.03);
 			p0 = rotatePoints(p0,rotationAngle,1);
 			p0 = scalePoints(p0,[-1,1,1]);
 			p0 = movesPoints(p0,0,-(l));
 			var k0 = makeKnots(p0,2);
 			var c0 = NUBS(S0)(2)(k0)(p0);
-			var p1 = capitalControlsPoints(0.035);
+			var p1 = capitalwithtrolsPoints(0.035);
 			p1 = rotatePoints(p1,rotationAngle,1);
 			p1 = scalePoints(p1,[-1,1,1]);
 			p1 = movesPoints(p1,0,-(l));
@@ -1205,14 +1205,14 @@
 			var s0 = BEZIER(S1)([c0,c1]);
 
 			//Base 22
-			var p2 = capitalControlsPoints(0.03);
+			var p2 = capitalwithtrolsPoints(0.03);
 			p2 = rotatePoints(p2,rotationAngle,1);
 			p2 = scalePoints(p2,[-1,1,1]);
 			p2 = movesPoints(p2,0,-(l));
 			p2 = movesPoints(p2,1,1.1);
 			var k2 = makeKnots(p2,2);
 			var c2 = NUBS(S0)(2)(k2)(p2);
-			var p3 = capitalControlsPoints(0.035);
+			var p3 = capitalwithtrolsPoints(0.035);
 			p3 = rotatePoints(p3,rotationAngle,1);
 			p3 = scalePoints(p3,[-1,1,1]);
 			p3 = movesPoints(p3,0,-(l));
@@ -1226,14 +1226,14 @@
 			Capital.push(base2);
 
 			//CopriCapital - 1
-			var p0 = capitalControlsPoints(0.03);
+			var p0 = capitalwithtrolsPoints(0.03);
 			p0 = rotatePoints(p0,rotationAngle,1);
 			var k0 = makeKnots(p0,2);
 			var c0 = NUBS(S0)(2)(k0)(p0);
 			var fp = BEZIER(S0)([p0[0],p0[0]]);
 			var s0 = BEZIER(S1)([c0,fp]);
 
-			var p2 = capitalControlsPoints(0.03);
+			var p2 = capitalwithtrolsPoints(0.03);
 			p2 = rotatePoints(p2,rotationAngle,1);
 			p2 = movesPoints(p2,1,1);
 			var k2 = makeKnots(p2,2);
@@ -1246,7 +1246,7 @@
 			Capital.push(T([1])([0.05])(base1));
 
 			//CopriCapital - 2 
-			var p0 = capitalControlsPoints(0.03);
+			var p0 = capitalwithtrolsPoints(0.03);
 			p0 = rotatePoints(p0,rotationAngle,1);
 			p0 = scalePoints(p0,[-1,1,1]);
 			p0 = movesPoints(p0,0,-(l));
@@ -1256,7 +1256,7 @@
 			var s0 = BEZIER(S1)([c0,fp]);
 
 
-			var p2 = capitalControlsPoints(0.03);
+			var p2 = capitalwithtrolsPoints(0.03);
 			p2 = rotatePoints(p2,rotationAngle,1);
 			p2 = scalePoints(p2,[-1,1,1]);
 			p2 = movesPoints(p2,0,-(l));
@@ -1351,10 +1351,10 @@
 		
 		//Reproduction for the other sides
 		var r = R([0,1])([-PI/2]);
-		DRAW(STRUCT([baseToRotate,r,baseToRotate,r,baseToRotate,r,baseToRotate]));
+		return STRUCT([baseToRotate,r,baseToRotate,r,baseToRotate,r,baseToRotate]);
 	}
 
-	drawColumns();
+	DRAW(drawColumns());
 
 
 	/*
@@ -1829,10 +1829,10 @@
 			[+5.3-9.695,-3.6 -9.695,3])(STRUCT(columns));
 
 		var r = R([0,1])([-PI/2]);
-		DRAW(STRUCT([baseToRotate,r,baseToRotate,r,baseToRotate,r,baseToRotate]));
+		return STRUCT([baseToRotate,r,baseToRotate,r,baseToRotate,r,baseToRotate]);
 	}
 
-	drawTympanum();
+	DRAW(drawTympanum());
 
 	/*
 	 * Roof and dome
@@ -1964,9 +1964,9 @@
 		drawPeak(1.5,14.6+1.9+0.40+0.45+0.45+0.70+0.4+0.3+0.2+0.9-0.05-h-h2-0.1);
 
 
-		DRAW(STRUCT(roof));
+		return STRUCT(roof);
 	}
 
-	drawRoof();
+	DRAW(drawRoof());
 
  }());

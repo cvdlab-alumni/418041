@@ -12,7 +12,7 @@
 
 	//Colors
 	var baseColor1 = [255/255,248/255,220/255];
-	var baseColor = [255/255,229/255,180/255];
+	var baseColor = [255/255,248/255,220/255];
 	var columnsColor = [253/255,245/255,230/255];
 	var groundColor = [255/255,255/255,236/255];
 

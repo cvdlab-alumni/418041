@@ -1370,17 +1370,17 @@
 			var Arcade = [];
 			
 			var m =	SIMPLEX_GRID([[0,0.8],[0,3.6],[0,0.3]]);
-			Arcade.push(m);
+			Arcade.push(COLOR(baseColor)(m));
 			var m1 =	SIMPLEX_GRID([[0,0.8-0.07],[0,3.6-0.035],[0,0.5]]);
-			Arcade.push(T([0,1,2])([0.035,0.035,0.3])(m1));
+			Arcade.push(COLOR(baseColor)(T([0,1,2])([0.035,0.035,0.3])(m1)));
 			var m2 =	SIMPLEX_GRID([[0,0.8-0.07],[0,0.9-0.035],[0,6-(0.5+0.3)]]);
-			Arcade.push(T([0,1,2])([0.035,0.035,0.3+0.5])(m2));
+			Arcade.push(COLOR(baseColor)(T([0,1,2])([0.035,0.035,0.3+0.5])(m2)));
 			var m3 =	SIMPLEX_GRID([[0,0.8-0.07],[0,0.8],[0,6-(0.5+0.3)]]);
-			Arcade.push(T([0,1,2])([0.035,0.9+1.9,0.3+0.5])(m3));
+			Arcade.push(COLOR(baseColor)(T([0,1,2])([0.035,0.9+1.9,0.3+0.5])(m3)));
 			var m4 =	SIMPLEX_GRID([[0,0.8],[0,0.9+0.035],[0,0.4]]);
-			Arcade.push(T([2])([6-1.9-0.4])(m4));
+			Arcade.push(COLOR(columnsColor)(T([2])([6-1.9-0.4])(m4)));
 			var m5 =	SIMPLEX_GRID([[0,0.8],[0,0.8+0.035+0.02],[0,0.4]]);
-			Arcade.push(T([1,2])([0.9+1.9-0.035,6-1.9-0.4])(m5));
+			Arcade.push(COLOR(columnsColor)(T([1,2])([0.9+1.9-0.035,6-1.9-0.4])(m5)));
 
 			var p0 = [[0.035,0,6],[0.035,1.9,6],[0.035,1.9,6]];
 			var k0 = makeKnots(p0,2);
@@ -1403,7 +1403,7 @@
 			var surf1 = BEZIER(S1)([c2,c3]);
 			var surf2 = BEZIER(S2)([surf0,surf1]);
 			surf2 = MAP(surf2)(domain3);
-			Arcade.push(T([1])([0.9])(surf2));
+			Arcade.push(COLOR(baseColor)(T([1])([0.9])(surf2)));
 
 
 			var p0 = [[0,0,6],[0,0.8,6],[0,0.8,6]];
@@ -1427,9 +1427,9 @@
 			var surf1 = BEZIER(S1)([c2,c3]);
 			var surf2 = BEZIER(S2)([surf0,surf1]);
 			surf2 = MAP(surf2)(domain3);
-			Arcade.push(T([1])([0.9+0.95-0.4])(surf2));
+			Arcade.push(COLOR(columnsColor)(T([1])([0.9+0.95-0.4])(surf2)));
 
-			return COLOR(baseColor)(STRUCT(Arcade));
+			return STRUCT(Arcade);
 		}
 
 		columns.push(drawArcade());
@@ -1527,8 +1527,18 @@
 			var a1 = drawAngle();
 			Tympanum.push(T([0])([8.79])(a1));
 			Tympanum.push(S([0])([-1])(a1));
+
+			Tympanum.push(T([1,2])([0.8,0.5-0.05])(COLOR(baseColor)(
+				SIMPLEX_GRID([[0,8.79],[0,4.4-0.8],[0,0.05]]))));
+
+			Tympanum.push(T([1,2])([0.8,0])(COLOR(baseColor)(
+				SIMPLEX_GRID([[0,0.8-0.035],[0,4.4-0.8],[0,0.5]]))));
+			Tympanum.push(T([0,1,2])([8.79-0.8+0.035,0.8,0])(COLOR(baseColor)(
+				SIMPLEX_GRID([[0,0.8-0.035],[0,4.4-0.8],[0,0.5]]))));
+
 			Tympanum.push(T([2])([0])(COLOR(baseColor)(
-				SIMPLEX_GRID([[0,8.79],[0,4.4],[0,0.05]]))));
+				SIMPLEX_GRID([[0,8.79],[0,0.8],[0,0.5]]))));
+
 
 			//Tympanum Edge 1
 			//Angle sx
@@ -1685,37 +1695,49 @@
 
 
 			//Coat-of-arms
-			var drawCoatOfArms = function(){
-				var coatOfArms= [];
-				var co1 = 0.45; var co2 = 0; var co3 = 0.9;
-				var h1 = 0; var h2 = 0; var h3 = 0.7; var h4 = 0.8;
-				var d = -0.04;
-				var p1 = [[h1,0,co1],[h2,0,co2],
-					[h3,0,co2],[h4,0,co1],
-					[h3,0,co3],[h2,0,co3],
-					[h1,0,co1]
-					];
-				var k1 = makeKnots(p1,2);
-				var c1 = NUBS(S0)(2)(k1)(p1);
-				var p22 = [p1[0],p1[0]];
-				var c22 = BEZIER(S0)(p22);	
-				var vert0 = BEZIER(S1)([c1,c22]);
+			var drawDecoration = function(){
 
-				var p1 = movesPoints(p1,1,d);
-				var k1 = makeKnots(p1,2);
-				var c1 = NUBS(S0)(2)(k1)(p1);
-				var p22 = [p1[0],p1[0]];
-				var c22 = BEZIER(S0)(p22);	
-				var vert1 = BEZIER(S1)([c1,c22]);
+			    var domain = DOMAIN([[0,1],[0,1]])([90,1]); 
 
-				var s0 = BEZIER(S2)([vert1,vert0]);
-				var mapped = MAP(s0)(domain3);
-				coatOfArms.push(mapped);
+			    var points1 = [[0,0.3,0.03],[-0.08,0.3,0],[-0.25,0.4,0],
+			    [-0.21,0.4,0],[-0.21,0.475,0.03],[-0.25,0.59,0.05],
+			      [-0.24,0.55,0.05],[-0.16,0.55,0.05],[-0.16,0.7,0.03],
+			      [-0.25,0.65,0.05],[-0.21,0.75,0.03],
+			      [-0.12,0.75,0.03],[-0.15,0.8,0.05],
+			      [0.15,0.8,0.05],[0.12,0.75,0.05],[0.21,0.75,0.05],
+			      [0.25,0.65,0.05],[0.16,0.7,0.03],[0.16,0.55,0.05],
+			      [0.24,0.55,0.05],[0.25,0.59,0.05],
+			      [0.21,0.475,0.03],[0.21,0.4,0],[0.25,0.4,0],
+			      [0.08,0.3,0],[0,0.3,0.03]
+			    ];
 
-				return COLOR(baseColor1)(STRUCT(coatOfArms))
+			    points1 = movesPoints(points1,1,-0.3);
+			    points1 = rotatePoints(points1,PI/2,0);
+			    points1 = scalePoints(points1,[1.5,1.5,1.5]);
+			    var points2 = movesPoints(points1,1,-0.03);
+
+			    var knots = makeKnots(points1,2);
+			    var curve1 = NUBS(S0)(2)(knots)(points1);
+			    var curve2 = NUBS(S0)(2)(knots)(points2);
+
+			    var p1 = [[0,0,0.3]];
+			    var p2 = [[0,0.05,0.3]]
+			    var sup3 = BEZIER(S1)([curve1,curve2]);
+			    sup3 = MAP(sup3)(domain);
+
+			    var c1 = BEZIER(S0)(p1);
+			    var curve3 = BEZIER(S1)([curve1,c1]);
+			    var surface1 = MAP(curve3)(domain);
+
+			    var c2 = BEZIER(S0)(p2);
+			    var curve4 = BEZIER(S1)([curve2,c2]);
+			    var surface2 = MAP(curve4)(domain);
+
+			    var superfice = STRUCT([sup3, surface1, surface2]);
+			    return COLOR(columnsColor)(T([0])([0])(superfice));
 			}
 
-			//Tympanum.push(T([0,2])([4.395-0.4,0.5+0.3])(drawCoatOfArms()));
+			Tympanum.push(T([0,1,2])([4.395,-0.03,0.5+0.5])(drawDecoration()));
 
 
 			var tympanumEdge1 = function(l){
